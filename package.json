@@ -1,0 +1,17 @@
+{
+  "name": "skoolbag",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome extension that saves Skool lesson videos as MP4 files for offline viewing.",
+  "author": "Moe Younis",
+  "license": "MIT",
+  "scripts": {
+    "build:locales": "node tools/build-locales.mjs",
+    "build:icons": "node tools/build-icons.mjs",
+    "test": "node tools/selftest.mjs && node tools/scope-test.mjs && node tools/deadcode.mjs",
+    "test:mux": "node tools/mux-test.mjs",
+    "package": "node tools/package.mjs",
+    "deadcode": "node tools/deadcode.mjs"
+  }
+}

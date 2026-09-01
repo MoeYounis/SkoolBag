@@ -1,0 +1,8 @@
+# Store text with LF regardless of the platform it was written on, so a Windows
+# checkout does not show every file as modified to someone on macOS or Linux.
+* text=auto eol=lf
+
+# Binary, never touch.
+*.png binary
+*.woff2 binary
+*.zip binary

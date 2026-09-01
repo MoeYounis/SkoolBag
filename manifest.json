@@ -1,0 +1,96 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "version": "1.0.0",
+  "default_locale": "en",
+  "description": "__MSG_extDesc__",
+  "minimum_chrome_version": "111",
+
+  "icons": {
+    "16": "assets/icon16.png",
+    "32": "assets/icon32.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+
+  "action": {
+    "default_title": "__MSG_extName__",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "32": "assets/icon32.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+
+  "options_page": "src/options/options.html",
+
+  "permissions": [
+    "downloads",
+    "storage",
+    "unlimitedStorage",
+    "offscreen",
+    "scripting",
+    "tabs",
+    "alarms",
+    "webRequest",
+    "declarativeNetRequestWithHostAccess"
+  ],
+
+  "host_permissions": [
+    "https://*.skool.com/*",
+    "https://*.mux.com/*",
+    "https://*.loom.com/*",
+    "https://*.vimeo.com/*",
+    "https://*.vimeocdn.com/*",
+    "https://*.wistia.com/*",
+    "https://*.wistia.net/*",
+    "https://*.akamaized.net/*",
+    "https://*.cloudfront.net/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.skool.com/*"],
+      "js": ["src/content/detector.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    },
+    {
+      "matches": ["https://*.skool.com/*"],
+      "js": ["src/content/page-hook.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "https://player.vimeo.com/*",
+        "https://*.loom.com/embed/*",
+        "https://*.loom.com/share/*",
+        "https://fast.wistia.net/embed/*"
+      ],
+      "js": ["src/content/embed-bridge.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "https://player.vimeo.com/*",
+        "https://*.loom.com/embed/*",
+        "https://*.loom.com/share/*",
+        "https://fast.wistia.net/embed/*"
+      ],
+      "js": ["src/content/embed-hook.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    }
+  ]
+}
