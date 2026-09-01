@@ -3,9 +3,7 @@
 A Chrome extension that saves Skool lesson videos as MP4 files so you can watch
 them offline.
 
-I built this because I kept losing access to courses I had paid for. Memberships
-lapse, communities get archived, instructors take lessons down. If you paid for
-something, you should be able to keep a copy of it.
+I built this because I spend too much time outside and I burn through mobile data. I'm part of several Skool communities and sometimes I need to view the videos offline to save data. So, I built SkoolBag
 
 It runs entirely in your browser. There is no account, no licence key, no upload
 step and no download limit.
